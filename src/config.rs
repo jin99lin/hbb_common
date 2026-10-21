@@ -119,7 +119,7 @@ const CHARS: &[char] = &[
 ];
 
 // Adoluna: self-hosted rendezvous/relay server (hbbs/hbbr).
-pub const RENDEZVOUS_SERVERS: &[&str] = &["assist.adoluna.com"];
+pub const RENDEZVOUS_SERVERS: &[&str] = &["remotesupport.adoluna.com"];
 // TODO(adoluna): replace with the real id_ed25519.pub from hbbs once the server VM is up.
 pub const RS_PUB_KEY: &str = "ADOLUNA_RS_PUB_KEY_PLACEHOLDER";
 
