@@ -69,8 +69,8 @@ lazy_static::lazy_static! {
     static ref ONLINE: Mutex<HashMap<String, i64>> = Default::default();
     pub static ref PROD_RENDEZVOUS_SERVER: RwLock<String> = RwLock::new("".to_owned());
     pub static ref EXE_RENDEZVOUS_SERVER: RwLock<String> = Default::default();
-    // Adoluna: no space on Windows/Linux - APP_NAME is used unquoted as service name (`sc create`, `systemctl enable {lowercase}`) and process match.
-    pub static ref APP_NAME: RwLock<String> = RwLock::new(if cfg!(any(windows, target_os = "linux")) { "AdolunaSupport" } else { "Adoluna Support" }.to_owned());
+    // Adoluna: no space on desktop (Windows/Linux/macOS) - APP_NAME is used unquoted as service name (`sc create`, `systemctl enable {lowercase}`) , process match and launchd plist names (macOS).
+    pub static ref APP_NAME: RwLock<String> = RwLock::new(if cfg!(not(any(target_os = "android", target_os = "ios"))) { "AdolunaSupport" } else { "Adoluna Support" }.to_owned());
     static ref KEY_PAIR: Mutex<Option<KeyPair>> = Default::default();
     static ref USER_DEFAULT_CONFIG: RwLock<(UserDefaultConfig, Instant)> = RwLock::new((UserDefaultConfig::load(), Instant::now()));
     pub static ref NEW_STORED_PEER_CONFIG: Mutex<HashSet<String>> = Default::default();
