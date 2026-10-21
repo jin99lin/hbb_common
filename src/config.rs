@@ -114,8 +114,10 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &["rs-ny.rustdesk.com"];
-pub const RS_PUB_KEY: &str = "OeVuKk5nlHiXp+APNn0Y3pC1Iwpwn44JGqrQCsWqmBw=";
+// Adoluna: self-hosted rendezvous/relay server (hbbs/hbbr).
+pub const RENDEZVOUS_SERVERS: &[&str] = &["remote.adoluna.com"];
+// TODO(adoluna): replace with the real id_ed25519.pub from hbbs once the server VM is up.
+pub const RS_PUB_KEY: &str = "ADOLUNA_RS_PUB_KEY_PLACEHOLDER";
 
 pub const RENDEZVOUS_PORT: i32 = 21116;
 pub const RELAY_PORT: i32 = 21117;
