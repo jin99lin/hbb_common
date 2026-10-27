@@ -78,6 +78,10 @@ lazy_static::lazy_static! {
     pub static ref DEFAULT_SETTINGS: RwLock<HashMap<String, String>> = RwLock::new(HashMap::from([
         ("verification-method".to_owned(), "use-permanent-password".to_owned()),
         ("approve-mode".to_owned(), "password".to_owned()),
+        // Adoluna: Deny LAN discovery ON by default (enable-lan-discovery = N).
+        ("enable-lan-discovery".to_owned(), "N".to_owned()),
+        // Adoluna: Direct IP access stays OFF.
+        ("direct-server".to_owned(), "N".to_owned()),
     ]));
     pub static ref OVERWRITE_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
     pub static ref DEFAULT_DISPLAY_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
