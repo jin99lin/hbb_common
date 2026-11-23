@@ -91,7 +91,15 @@ lazy_static::lazy_static! {
         ("disable-floating-window".to_owned(), "Y".to_owned()),
     ]));
     pub static ref OVERWRITE_LOCAL_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
-    pub static ref HARD_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
+    // iOS build is a controller-only TestFlight app: never accept incoming.
+    pub static ref HARD_SETTINGS: RwLock<HashMap<String, String>> = RwLock::new({
+        let mut m = HashMap::new();
+        #[cfg(target_os = "ios")]
+        {
+            m.insert("conn-type".to_owned(), "outgoing".to_owned());
+        }
+        m
+    });
     pub static ref BUILTIN_SETTINGS: RwLock<HashMap<String, String>> = Default::default();
 }
 
